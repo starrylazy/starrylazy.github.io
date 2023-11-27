@@ -40,7 +40,7 @@
     
 <link rel="stylesheet" href="/css/toc.css">
 
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
     
     
     <body>
@@ -306,19 +306,8 @@
 <blockquote>
 <p>对于用户自己的文件, 一般都是存放到自己的家目录中, 也就是 <code>/home/用户名</code>里边, 通过指定的相应的路径就可以找到这个文件了。关于路径的指定的有两种方式：<code>相对路径</code>和<code>绝对路径</code>。</p>
 </blockquote>
-<pre><code class="shell"># 这是在root用户的家目录中, 并且展示了家目录中的子目录的从属关系
-# 方括号中的内容是[用户名@主机名 当前位置]
-[root@VM-8-14-centos ~]# tree
-.
-|-- ace
-|   `-- brother
-|       `-- finally
-|           `-- die.txt
-`-- luffy
-    `-- get
-        `-- onepiece
-            `-- haha.txt
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这是在root用户的家目录中, 并且展示了家目录中的子目录的从属关系</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">方括号中的内容是[用户名@主机名 当前位置]</span></span><br><span class="line">[root@VM-8-14-centos ~]# tree</span><br><span class="line">.</span><br><span class="line">|-- ace</span><br><span class="line">|   `-- brother</span><br><span class="line">|       `-- finally</span><br><span class="line">|           `-- die.txt</span><br><span class="line">`-- luffy</span><br><span class="line">    `-- get</span><br><span class="line">        `-- onepiece</span><br><span class="line">            `-- haha.txt</span><br></pre></td></tr></table></figure>
+
 <h2 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h2><p>相对路径：相对路径就是相对于当前文件的路径。在Linux中有两个表示路径的特殊符号:</p>
 <ul>
 <li><p><code>./</code>：代表目前所在的目录，也可以使用 <code>.</code>表示。</p>
@@ -326,10 +315,7 @@
 <li><p><code>../</code>：代表当前目录的上一层目录，也可以使用 <code>..</code>表示。</p>
 </li>
 <li><p>以上边的目录为例, 从当前root家目录 <code>/root</code>, 进入到 <code>onepiece</code>目录使用相对路径</p>
-<pre><code class="shell">#使用cd命令
-[root@VM-8-14-centos ~]# cd luffy/get/onepiece/
-</code></pre>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用<span class="built_in">cd</span>命令</span></span><br><span class="line">[root@VM-8-14-centos ~]# cd luffy/get/onepiece/</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>接下来研究一下相对路径的优缺点:</p>
 <ul>
@@ -343,9 +329,7 @@
 <li><p>Windows: 起始节点为某个磁盘的盘符，比如：<code>f:\\root\\luffy\\get\\onepiece</code></p>
 </li>
 <li><p>以上边的目录为例, 从当前root家目录 <code>/root</code>, 进入到 <code>onepiece</code>目录使用绝对路径</p>
-<pre><code class="shell">[root@VM-8-14-centos ~]# cd /root/luffy/get/onepiece/
-</code></pre>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-14-centos ~]# cd /root/luffy/get/onepiece/</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>接下来研究一下绝对路径的优缺点:</p>
 <ul>
@@ -364,29 +348,22 @@
 </blockquote>
 <ul>
 <li><p>在Linux中有一个叫做<code>PATH</code>的环境变量, 里边存储了一些系统目录 (<code>windows也有, 叫 Path</code>)</p>
-<pre><code class="shell"># 通过 echo 命令可以查看环境变量 PATH 中的值, 在shell中变量名前加 $ 就是取值
-[root@VM-8-14-centos ~]# echo $PATH
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过 <span class="built_in">echo</span> 命令可以查看环境变量 PATH 中的值, 在shell中变量名前加 $ 就是取值</span></span><br><span class="line">[root@VM-8-14-centos ~]# echo $PATH</span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>命令解析器需要依次搜索 <code>PATH</code>中的各个目录, 检查这些目录中是否有用户输入的指令</p>
 <ul>
 <li><p>如果找到了, 执行该目录下的可执行程序, 用户输入的命令就被执行完毕了</p>
 </li>
 <li><p>如果没有找到, 继续搜索其他目录, 最后还是没有找到, 会提示命令找不到, 因此无法被执行</p>
-<pre><code class="shell">[root@VM-8-14-centos ~]# asdjflksd
--bash: asdjflksd: command not found
-</code></pre>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-14-centos ~]# asdjflksd</span><br><span class="line">-bash: asdjflksd: command not found</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h2 id="命令提示行"><a href="#命令提示行" class="headerlink" title="命令提示行"></a>命令提示行</h2><blockquote>
 <p>在Linux终端中, 输入要执行的指令之前会有想用的命令提示, 我们将其称之为命令提示行, 例如:</p>
 </blockquote>
-<pre><code class="shell">[root@VM-8-14-centos ~/luffy/get/onepiece]#
-[robin@VM-8-14-centos ~/luffy/get/onepiece]$ 
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-14-centos ~/luffy/get/onepiece]#</span><br><span class="line">[robin@VM-8-14-centos ~/luffy/get/onepiece]$ </span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p><code>root</code> : 当前登录的用户的用户名</p>
 </li>
