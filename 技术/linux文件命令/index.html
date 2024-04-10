@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <style>
+        body
+        {
+            font-family: "Times New Roman", Helvetica, Tahoma, Arial,   LXGW WenKai   "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif !important;
+
+        }
+    </style>
+
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="linux文件命令" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>starry | blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">starry</a> 
+            <span class="description">starry`s blog</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            linux文件命令
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><p>转载文章<br>文章链接: <a target="_blank" rel="noopener" href="https://subingwen.cn/linux/file-commands/">https://subingwen.cn/linux/file-commands/</a></p>
+<h1 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a>cd 命令</h1><blockquote>
+<p>在Linux终端中如果想要进行工作路径的切换, 需要使用<code>cd</code>命令。在进行目录的切换的时候， 我们可以使用相对路径也可以使用绝对路径。</p>
+</blockquote>
+<ul>
+<li><p>进入指定目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> 目录名</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>目录名</code>: 使用相对路径&#x2F;绝对路径都可以, 该路径必须是一个有效路径</p>
+</li>
+<li><p><code>特殊的目录</code>:</p>
+<ul>
+<li><code>..</code>: 表示当前目录的上一级目录, 使用<code>cd ..</code> 或者 <code>cd ../</code>都可以</li>
+<li><code>.</code> : 表示当前目录, 使用 <code>.</code>或者<code>./</code>都可以, <code>cd .</code>不会切换目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进入家目录</p>
+<blockquote>
+<p>每个用户(普通用户和root)都有一个属于自己的目录, 比如:</p>
+<ul>
+<li>robin是普通用户, 家目录: &#x2F;home&#x2F;robin</li>
+<li>luffy是用户, 家目录: &#x2F;home&#x2F;luffy</li>
+<li>root是管理员用户, 家目录: &#x2F;root</li>
+</ul>
+<p>按照上边的格式来表示家目录书写起来比较麻烦, 有一种相对简单的写法就是使用 <code>~</code> 表示。如果是使用<code>cd</code>命令切换到家目录, 后边可以什么路径都不加, 这样也可以进入到当前用户的家目录。综上所述也就是通过<code>cd</code>进入到当前用户的家目录一共有三种不同的方式。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span>                    <span class="comment"># 方式1</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ~                  <span class="comment"># 方式2</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> /home/用户名        <span class="comment"># 方式3</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在临近的两个目录之间切换</p>
+<blockquote>
+<p>如果我们要频繁的在两个路径之间切换, 也有相关的快捷操作, 尤其是对于比较长的路径, 可以是这简直是一个福利:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过<span class="built_in">cd</span>进入到目录1:  /usr/include/c++/7.5.0/ext/pb_ds/detail/list_update_map_/</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过<span class="built_in">cd</span>进入到目录2:  /home/luffy/get/onepiece/itis/a/goldfish</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">频繁在两个目录之间切换</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> -</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h1><blockquote>
+<p><code>ls</code> 就是 list, 打印指定的文件信息, 如果是目录, 显示对应目录中有哪些子文件, 语法格式如下:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> [args]           <span class="comment"># 查看当前目录</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> [args] 目录名 	<span class="comment"># 查看指定目录</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> [args] 文件名 	<span class="comment"># 查看某个文件的信息</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="显示所有文件"><a href="#显示所有文件" class="headerlink" title="显示所有文件"></a>显示所有文件</h2><blockquote>
+<p>给 <code>ls</code>添加 <code>-a</code>参数（就是 <code>all </code>的意思）就可以显示指定目录中是所有文件了, 因为默认情况下具有隐藏属性的文件是不会显示出来的。那么在Linux中什么样是文件才能被隐藏呢？起始很简单只需要在文件名前边加一个点(<code>.</code>)文件就具有隐藏属性了， 例如： <code>.demo</code>, <code>.a.txt</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看root家目录下所有非隐藏文件</span></span><br><span class="line">[root@VM-8-14-centos ~]# ls</span><br><span class="line">ace  luffy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看root家目录下所有文件 (隐藏 + 非隐藏)</span></span><br><span class="line">[root@VM-8-14-centos ~]# ls -a</span><br><span class="line">.   ace            .bash_logout   .bashrc  .config  .lesshst  .pip  .pydistutils.cfg </span><br><span class="line">..  .bash_history  .bash_profile  .cache   .cshrc   luffy     .pki  .ssh  .viminfo</span><br></pre></td></tr></table></figure>
+
+<h2 id="显示文件详细信息"><a href="#显示文件详细信息" class="headerlink" title="显示文件详细信息"></a>显示文件详细信息</h2><blockquote>
+<p>给 <code>ls</code>添加 <code>-l</code>参数（就是 <code>list </code>的意思）我们就可以看到文件的详细信息了, 里边的信息量还是非常大的, 其中包括: <code>文件类型</code>, <code>文件所有者对文件的操作权限</code>, <code>文件所属组用户对文件的操作权限</code>, <code>其他人对文件的操作权限</code>, <code>硬链接计数</code>, <code>文件所有者</code>, <code>文件所属组</code>, <code>文件大小</code>, <code>文件的修改日期</code>, <code>文件名</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示文件的详细信息</span></span><br><span class="line">robin@OS:~$ ls -l</span><br><span class="line">total 204</span><br><span class="line">-rw-rw-r--  1 robin robin    268 Mar 22 17:32 a.c</span><br><span class="line">drwxrwxr-x  2 robin robin   4096 Aug  4  2019 config</span><br><span class="line">-rw-r--r--  1 robin robin 129487 Dec 25 11:28 english.txt</span><br><span class="line">drwxrwxr-x  4 robin robin   4096 Jan 15 17:48 libevent</span><br><span class="line">drwxrwxr-x 17 robin robin   4096 Apr 13 22:42 Linux</span><br><span class="line">drwxrwxr-x  8 robin robin   4096 Feb  5 16:57 luffy</span><br><span class="line">-rw-r--r--  1 robin robin   2223 Mar  2 14:39 main.cpp</span><br><span class="line">-rw-rw-r--  1 robin robin   2167 Dec  1 22:41 mysql_test.c</span><br><span class="line">drwxrwxr-x  9 robin robin   4096 Mar 26 19:19 network</span><br><span class="line">-rw-r--r--  1 robin robin   1406 Mar  2 20:18 occi.cpp</span><br><span class="line">drwxrwxr-x  3 robin robin   4096 Oct 30 12:09 oradiag_robin</span><br><span class="line">drwxrwxr-x 11 robin robin   4096 Mar 26 09:40 package</span><br><span class="line">drwxrwxr-x  2 robin robin   4096 Dec 29 17:11 process</span><br><span class="line">drwxrwxr-x 17 robin robin   4096 Mar 29 22:31 projects</span><br><span class="line">-rw-r--r--  1 robin robin   1816 Jan  6 09:37 sidtime.c</span><br><span class="line">drwxrwxr-x  2 robin robin   4096 Mar 22 11:31 socket</span><br><span class="line">-rw-r--r--  1 robin robin    583 Oct 18 17:21 test.c</span><br><span class="line">-rw-r--r--  1 robin robin   2015 Mar  1 17:05 test.cpp</span><br><span class="line">-rw-rw-r--  1 robin robin   2218 Dec  2 17:02 test_mysql.c</span><br><span class="line">drwxrwxr-x  5 robin robin   4096 Jan 13 17:35 udp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件详细信息介绍</span></span><br><span class="line"> d      rwx       rwx     r-x     5    robin    robin    4096    Jan 13 17:35    udp</span><br><span class="line"> |       |         |       |      |      |        |       |          |	          |</span><br><span class="line">文件    文件所    文件所   其他人 硬链接  文件     文件   文件大小  文件修改时间     文件名</span><br><span class="line">类型   有者权限  属组权限  权限   计数   所有者   所属组    </span><br></pre></td></tr></table></figure>
+
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><blockquote>
+<p>在Linux操作系统中, 一共有7中文件类型, 这7中类型是根据文件属性进行划分的, 而不是根据文件后缀划分的。</p>
+</blockquote>
+<ol>
+<li><code>-</code>: 普通的文件, 在Linux终端中没有执行权限的为白色, 压缩包为红色, 可执行程序为绿色字体</li>
+<li><code>d</code>: 目录(directory), 在Linux终端中为蓝色字体, 如果目录的所有权限都是开放的, 有绿色的背景色</li>
+<li><code>l</code>: 软链接文件(link), 相当于windows中的快捷方式, 在Linux终端中为淡蓝色(青色)字体</li>
+<li><code>c</code>: 字符设备(char), 在Linux终端中为黄色字体</li>
+<li><code>b</code>: 块设备(block), 在Linux终端中为黄色字体</li>
+<li><code>p</code>: 管道文件(pipe), 在Linux终端中为棕黄色字体</li>
+<li><code>s</code>: 本地套接字文件(socket), 在Linux终端中为粉色字体</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_12_14_45_image-20210125152319028.png" title="image-20210125152319028" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_12_14_45_image-20210125152319028.png" alt="image-20210125152319028"></a></p>
+<h3 id="用户类型"><a href="#用户类型" class="headerlink" title="用户类型"></a>用户类型</h3><blockquote>
+<p>在Linux中有三大类用户: <code>文件所有者</code>, <code>文件所属组用户</code>, <code>其他人</code>, 我们可以对同一个文件给这三种人设置不同的操作权限, 用于限制用户对文件的访问。</p>
+</blockquote>
+<ul>
+<li>文件所有者<ul>
+<li>Linux中的所有的文件都有一个所有者, 就是文件的主人</li>
+</ul>
+</li>
+<li>文件所属组<ul>
+<li>文件的主人属于哪个组, 这个文件默认也就属于哪个组</li>
+<li>用户组中可以有多个用户, 这些组中的其他用户和所有者的权限可以是不一样的</li>
+</ul>
+</li>
+<li>其他人<ul>
+<li>这个用户既不是文件所有者也不是文件所属组中的用户，就称之为其他人</li>
+<li>其他人对文件也可以拥有某些权限</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><blockquote>
+<p>Linux中不同的用户可以对文件拥有不同的操作权限, 权限一共有四种: <code>读权限</code>, <code>写权限</code>, <code>执行权限</code>, <code>无权限</code>。</p>
+</blockquote>
+<ul>
+<li>读权限：使用 <code>r</code>表示, 即: <code>read</code></li>
+<li>写权限：使用 <code>w</code>表示, 即: <code>write</code></li>
+<li>执行权限：使用 <code>x</code>表示, 即: <code>excute</code></li>
+<li>没有任何权限：使用<code>-</code>表示</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">   -           rwx          rw-          r--  1 robin robin   2218 Dec  2 17:02 app</span><br><span class="line">   |            |            |            |</span><br><span class="line">文件类型      文件所有      文件所属     其他人权限</span><br><span class="line">             者权限        组权限</span><br></pre></td></tr></table></figure>
+
+<p>从上边的例子中可以看出:</p>
+<ul>
+<li>文件所有者对文件有<code>读、写、执行权限</code></li>
+<li>文件所属组用户对文件有 <code>读、写权限, 没有执行权限</code></li>
+<li>其他人对文件有 <code>读权限, 没有写、执行权限</code></li>
+</ul>
+<h3 id="硬链接计数"><a href="#硬链接计数" class="headerlink" title="硬链接计数"></a>硬链接计数</h3><blockquote>
+<p>硬链接计数是一个整数，如果这个数为N(<code>N&gt;=1</code>)，就说明在一个或者多个目录下一共有N个文件, 但是这N个文件并不占用多块磁盘空间, 他们使用的是同一块, 如果通过其中一个文件修改了磁盘数据, 那么其他文件中的内容也就变了。每当我们给给磁盘文件创建一个硬链接（<code>使用 ln</code>），磁盘上就会出现一个新的文件名，硬链接计数加1，但是这新文件并不占用任何的磁盘空间，文件名还是映射到原来的磁盘地址上。</p>
+<p>下图中为大家展示了给文件创建硬链接, 和直接进行文件拷贝的区别, <code>创建硬链接只是多了一个新的文件名, 拷贝文件不仅多了新的文件名在磁盘上数据也进行了拷贝</code></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_12_16_20_image-20210125185650189.png" title="image-20210125185650189" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_12_16_20_image-20210125185650189.png" alt="image-20210125185650189"></a></p>
+<h3 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h3><blockquote>
+<p>关于<code>ls -l</code>得到的其他属性相对比较简单, 最后再给大家介绍一下:</p>
+</blockquote>
+<ul>
+<li><p>文件大小 —&gt;单位是字节</p>
+<ul>
+<li>如果文件是目录显示为<code>4096</code>, 这是目录自身大小, 不包括目录中的文件大小</li>
+</ul>
+</li>
+<li><p>文件日期: 显示的是文件的修改日期, 只要文件被更新, 日期也会随之变化</p>
+</li>
+<li><p>文件名: 文件自己的名字（没啥可解释的）</p>
+<ul>
+<li>如果文件类型是软连接会这样显示：<code> link -&gt; /root/file/test</code>, 后边的路径表示快捷方式链接的是哪个磁盘文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h2><h3 id="单位显示"><a href="#单位显示" class="headerlink" title="单位显示"></a>单位显示</h3><blockquote>
+<p>在查看文件大小的时候, 如果文件比较大对应的数组自然也就很大, 我们还需要基于字节进行相关的换算, 不能直观得到我们想要的结果, 如果数学不好, 我们可以使用一个参数 <code>-h (human)</code>(就是命令说人话)。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接查看文件大小</span></span><br><span class="line">[root@VM-8-14-centos ~]# ls -l ipc.tar.gz </span><br><span class="line">-rw-r--r-- 1 root root 122962 Apr 25  2020 ipc.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加 -h 参数查看文件大小</span></span><br><span class="line">[root@VM-8-14-centos ~]# ls -lh ipc.tar.gz </span><br><span class="line">-rw-r--r-- 1 root root 121K Apr 25  2020 ipc.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示目录后缀"><a href="#显示目录后缀" class="headerlink" title="显示目录后缀"></a>显示目录后缀</h3><blockquote>
+<p>在查看文件信息的时候, 处理通过文件类型区分该文件是不是一个目录之外, 还可以通过一个参数 <code>-F</code>在目录名后边显示一个<code>/</code>, 这样就可以直接区分出来了。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接查看文件信息</span></span><br><span class="line">[root@VM-8-14-centos ~/file]# ls -l</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jan 25 14:29 dir</span><br><span class="line">-rw-r--r-- 1 root root    0 Jan 25 14:49 haha.tar.gz</span><br><span class="line">-rwxrwxrwx 1 root root    0 Jan 25 14:49 hello</span><br><span class="line">lrwxrwxrwx 1 root root   15 Jan 25 14:30 link -&gt; /root/file/test</span><br><span class="line">prw-r--r-- 1 root root    0 Jan 25 14:24 pipe-2</span><br><span class="line">drwxrwxrwx 2 root root 4096 Jan 25 15:20 subdir</span><br><span class="line">-rw-r--r-- 1 root root    0 Jan 25 14:23 test</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加了 -F 参数查看文件信息</span></span><br><span class="line">[root@VM-8-14-centos ~/file]# ls -lF</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jan 25 14:29 dir/</span><br><span class="line">-rw-r--r-- 1 root root    0 Jan 25 14:49 haha.tar.gz</span><br><span class="line">-rwxrwxrwx 1 root root    0 Jan 25 14:49 hello*</span><br><span class="line">lrwxrwxrwx 1 root root   15 Jan 25 14:30 link -&gt; /root/file/test</span><br><span class="line">prw-r--r-- 1 root root    0 Jan 25 14:24 pipe-2|</span><br><span class="line">drwxrwxrwx 2 root root 4096 Jan 25 15:20 subdir/</span><br><span class="line">-rw-r--r-- 1 root root    0 Jan 25 14:23 test</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建删除目录"><a href="#创建删除目录" class="headerlink" title="创建删除目录"></a>创建删除目录</h1><ul>
+<li><p>创建目录</p>
+<blockquote>
+<p>目录的创建分为两种, 一种是创建单个目录, 另一种是一次性创建多层目录, 使用的命令是<code>mkdir</code>, 后边参数是要创建的目录的名字, 如果是多层目录需要添加参数<code>-p</code>。</p>
+<p>关于创建的目录所在的路径可以是相对路径， 也可以是绝对路径。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">单层目录</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> 新目录的名字</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">多层目录, 需要加参数 -p</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> parent/child/baby1/baby2 -p</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除目录</p>
+<p>如果要删除已经存在的路径一共有两种方式, 可以使用<code>rmdir</code>或者<code>rm</code></p>
+<ul>
+<li><code>rmdir</code>: 只能删除空目录，有点low，不好用</li>
+<li><code>rm</code>: 可以删除文件也可以删除目录, 如果删除的的是目录, 需要加参数 <code>-r</code>, <strong>意思是递归(recursion)</strong></li>
+</ul>
+<p><code>rm</code>命令还有另外两个经常使用的参数:</p>
+<ul>
+<li><code>-i</code>: 删除的时候给提示</li>
+<li><code>-f</code>: 强制删除文件, 没有提示直接删除并且不能恢复, 慎用</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. low, 矮穷矬, 只能删除空目录</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rmdir</span> 目录名</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 高大上, 可以删除目录也可以删除文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除目录需要加参数 -r, 递归的意思, 删除之后是不能恢复的</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> 目录名  -r</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="cp-命令"><a href="#cp-命令" class="headerlink" title="cp 命令"></a>cp 命令</h1><blockquote>
+<p>cp 就是copy, 拷贝, 使用这个命令可以拷贝文件也可以拷贝目录</p>
+</blockquote>
+<ul>
+<li><p>拷贝文件 &#x3D;&gt; <code>文件不存在得到新文件, 文件存在就覆盖</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">`语法: <span class="built_in">cp</span> 要拷贝的文件  得到的文件`</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">`场景1: 文件A, 将A拷贝一份得到文件B`</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> 文件A 文件B</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">`场景2: 文件A存在的, 文件B也是存在的, 执行下边的拷贝 ==&gt; 文件A覆盖文件B`</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> 文件A 文件B</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝目录 &#x3D;&#x3D;&gt; <code>目录不存在得到新目录, 该目录被拷贝到存在的目录中</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拷贝目录需要参数 -r</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">场景1: 目录A, 通过拷贝得到不存在的目录B</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> 目录A 目录B -r</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">场景2: 目录A存在的, 目录B也是存在的, 执行下边的拷贝 ==&gt; 目录A会被拷贝并将其放到目录B中</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> 目录A 目录B -r</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">场景3: 把A目录里的某一个或者多个文件拷贝到B目录中</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> A/a.txt B	<span class="comment"># 拷贝 A目录中的 a.txt 到目录B中</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> A/* B -r	<span class="comment"># 拷贝 A目录中的所有文件到目录B中, 不能确定A目录中是否有子目录, 因此需要加 -r</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="mv-命令"><a href="#mv-命令" class="headerlink" title="mv 命令"></a>mv 命令</h1><blockquote>
+<p>mv 就是move, 这个Linux命令既能移动文件所在目录也可以给文件改名。</p>
+</blockquote>
+<ul>
+<li><p>文件的移动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: <span class="built_in">mv</span> 要移动的文件  目录</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">有一个文件A, 移动到目录B中</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中A可以是文件也可以是目录, B必须是目录而且必须是存在的</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mv</span> A B</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件改名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: <span class="built_in">mv</span> 要改名的文件  新名字(原来是不存在的，这点很重要)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中A可以是文件也可以是目录，并且是存在的, B原来是不存在的</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mv</span> A B</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件覆盖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: <span class="built_in">mv</span> 存在文件A  存在的文件B</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中A是文件（非目录）并且是存在的, B也是一个文件（非目录）并且也存在</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">A文件中的内容覆盖B文件中的内容, A文件被删除, 只剩下B文件</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mv</span> A B</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h1><blockquote>
+<p>如果想要查看文件内容方式有很多, 最常用的是<code>vim</code>, 下面介绍一下<code>vim</code>以外的一些的一些方式:</p>
+</blockquote>
+<ul>
+<li><p>cat</p>
+<blockquote>
+<p>该命令可以将文件内容显示到终端, 由于终端是有缓存的, 因此能显示的字节数也是受限制的。 <code>如果文件太大数据就不能完全显示出来了，因此该命令适合查看比较小的文件内容。</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> 文件名</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>more</p>
+<blockquote>
+<p>该命令比<code>cat</code>要高级一点, 我们可以以翻屏的方式查看文件中的内容，使用方式如下：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">more 文件名</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">快捷键</span></span><br><span class="line">- 回车: 显示下一行</span><br><span class="line">- 空格: 向下滚动一屏</span><br><span class="line">- b: 返回上一屏</span><br><span class="line">- q: 退出more</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>less</p>
+<blockquote>
+<p>该命令和<code>more</code>命令差不多, 我们可以以翻屏的方式查看文件中的内容，使用方式如下：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">less 文件名</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">快捷键</span></span><br><span class="line">- b: 向上翻页</span><br><span class="line">- 空格: 向后翻页</span><br><span class="line">- 回车: 显示下一行</span><br><span class="line">- 上下键: 上下滚动</span><br><span class="line">- q:退出</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>head</p>
+<blockquote>
+<p>使用该命令可以查看文件头部的若干行信息, 使用方式如下:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认显示文件的前10行</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">head</span> 文件名</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定显示头部的前多少行</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">head</span> -行数 文件名</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tail</p>
+<blockquote>
+<p>使用该命令可以查看文件尾部的若干行信息, 使用方式如下:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认显示文件的后10行</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> 文件名</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定显示尾部的最后多少行</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -行数 文件名</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="链接的创建"><a href="#链接的创建" class="headerlink" title="链接的创建"></a>链接的创建</h1><blockquote>
+<p>链接分两种类型: <code>软连接</code>和<code>硬链接</code>。软连接相当于windows中的快捷方式，硬链接前边也已经介绍过了文件并不会进行拷贝，只是多出一个新的文件名并且硬链接计数会加1。</p>
+</blockquote>
+<ul>
+<li><p>软连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: <span class="built_in">ln</span> -s 源文件路径 软链接文件的名字(可以带路径)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看目录文件</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 3 root root 4096 Jan 25 17:27 get</span><br><span class="line">-rw-r--r-- 1 root root   37 Jan 25 17:26 onepiece.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">给 onepiece.txt 创建软连接, 放到子目录 get 中</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ln -s /root/luffy/onepiece.txt get/link.lnk  </span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ll get</span><br><span class="line">total 4</span><br><span class="line">lrwxrwxrwx 1 root root   24 Jan 25 17:27 link.lnk -&gt; /root/luffy/onepiece.txt</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jan 24 21:37 onepiece</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>硬链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: <span class="built_in">ln</span> 源文件 硬链接文件的名字(可以带路径)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建硬链接文件, 放到子目录中</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ln onepiece.txt get/link.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看链接文件和硬链接计数, 从 1 --&gt; 2</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ll get</span><br><span class="line">total 8</span><br><span class="line">lrwxrwxrwx 1 root root   24 Jan 25 17:27 link.lnk -&gt; /root/luffy/onepiece.txt</span><br><span class="line">-rw-r--r-- 2 root root   37 Jan 25 17:26 link.txt</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jan 24 21:37 onepiece</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>简单说一下软硬连接的区别：</p>
+<p>硬链接：两个路径指向同一个数据块，即文件系统中的同一个索引，这两个硬链接是对等的</p>
+<p>软连接：软连接的文件内容是一个硬链接的路径</p>
+</blockquote>
+<h1 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h1><blockquote>
+<p>文件属性相关的命令主要是修改用户对文件的操作权限, 文件所有者, 文件所属组的相关信息。</p>
+</blockquote>
+<h2 id="修改文件文件权限"><a href="#修改文件文件权限" class="headerlink" title="修改文件文件权限"></a>修改文件文件权限</h2><blockquote>
+<p>文件权限是针对<code>文件所有者</code>, <code>文件所属组用户</code>, <code>其他人</code>这三类人而言的, 对应的操作指令是<code>chmod</code>。设置方式也有两种，分别为<code>文字设定法</code>和<code>数字设定法</code>。</p>
+<p>文字设定法是通过一些关键字<code>r</code>, <code>w</code>, <code>x</code>, <code>-</code>来描述用户对文件的操作权限。</p>
+<p>数字设定法是通过一些数字 <code>0</code>, <code>1</code>, <code>2</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code> 来描述用户对文件的操作权限。</p>
+</blockquote>
+<ul>
+<li><p>文字设定法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="built_in">chmod</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法格式: <span class="built_in">chmod</span> <span class="built_in">who</span> [+|-|=] mod 文件名</span></span><br><span class="line">	- who:</span><br><span class="line">		- u: user  -&gt; 文件所有者</span><br><span class="line">		- g: group -&gt; 文件所属组用户</span><br><span class="line">		- o: other -&gt; 其他</span><br><span class="line">		- a: all, 以上是三类人 u+g+o</span><br><span class="line">	- 对权限的操作:</span><br><span class="line">		+: 添加权限</span><br><span class="line">		-: 去除权限</span><br><span class="line">		=: 权限的覆盖</span><br><span class="line">	- mod: 权限</span><br><span class="line">		r: read, 读</span><br><span class="line">		w: write, 写</span><br><span class="line">		x: execute, 执行</span><br><span class="line">		-: 没有权限</span><br><span class="line"><span class="meta prompt_">		</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将文件所有者权限设置为读和执行, 也就是权限覆盖</span></span><br><span class="line">robin@OS:~/Linux$ chmod u=rx b.txt </span><br><span class="line">robin@OS:~/Linux$ ll b.txt         </span><br><span class="line">-r-xrw-r-- 2 robin robin 2929 Apr 14 18:53 b.txt*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">给其他人添加写和执行权限</span></span><br><span class="line">robin@OS:~/Linux$ chmod o+wx b.txt </span><br><span class="line">robin@OS:~/Linux$ ll b.txt         </span><br><span class="line">-r-xrw-rwx 2 robin robin 2929 Apr 14 18:53 b.txt*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">给文件所属组用户去掉读和执行权限</span></span><br><span class="line">robin@OS:~/Linux$ chmod g-rx b.txt </span><br><span class="line">robin@OS:~/Linux$ ll b.txt         </span><br><span class="line">-r-x-w-rwx 2 robin robin 2929 Apr 14 18:53 b.txt*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将文件所有者,文件所属组用户,其他人权限设置为读+写+执行</span></span><br><span class="line">robin@OS:~/Linux$ chmod a=rwx b.txt</span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rwxrwxrwx 2 robin robin 2929 Apr 14 18:53 b.txt*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字设定法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法格式: <span class="built_in">chmod</span> [+|-|=] mod 文件名</span></span><br><span class="line">	- 对权限的操作:</span><br><span class="line">		+: 添加权限</span><br><span class="line">		-: 去除权限</span><br><span class="line">		=: 权限的覆盖, 等号可以不写</span><br><span class="line">	- mod: 权限描述, 所有权限都放开是 7</span><br><span class="line">		- 4: read, r</span><br><span class="line">		- 2: write, w</span><br><span class="line">		- 1: execute , x</span><br><span class="line">		- 0: 没有权限</span><br><span class="line"><span class="meta prompt_">		</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">分解: <span class="built_in">chmod</span> 0567 a.txt</span></span><br><span class="line"></span><br><span class="line">    0           5           6             7</span><br><span class="line">  八进制     文件所有者  文件所属组用户    其他人</span><br><span class="line">              r + x       r + w         r+w+x</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">######################## 举例 #########################</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件 c.txt 的权限</span>			   </span><br><span class="line">robin@OS:~/Linux$ ll c.txt </span><br><span class="line">-rwxrwxrwx 2 robin robin 2929 Apr 14 18:53 c.txt*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件所有者去掉执行权限, 所属组用户去掉写权限, 其他人去掉读+写权限</span></span><br><span class="line">robin@OS:~/Linux$ chmod -123 c.txt</span><br><span class="line">robin@OS:~/Linux$ ll c.txt </span><br><span class="line">-rw-r-xr-- 2 robin robin 2929 Apr 14 18:53 c.txt*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件所有者添加执行权限, 所属组用户和其他人权限不变</span></span><br><span class="line">robin@OS:~/Linux$ chmod +100 c.txt</span><br><span class="line">robin@OS:~/Linux$ ll c.txt </span><br><span class="line">-rwxr-xr-- 2 robin robin 2929 Apr 14 18:53 c.txt*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将文件所有者,文件所属组用户,其他人权限设置为读+写, 没有执行权限</span></span><br><span class="line">robin@OS:~/Linux$ chmod 666 c.txt</span><br><span class="line">robin@OS:~/Linux$ ll c.txt </span><br><span class="line">-rw-rw-rw- 2 robin robin 2929 Apr 14 18:53 c.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h2><blockquote>
+<p>默认情况下, 文件是通过哪个用户创建出来的, 就属于哪个用户, 这个用户属于哪个组, 文件就属于哪个组。如果有特殊需求，可以修改文件所有者，对应的操作命令是<code>chown</code>。因为修改文件所有者就跨用户操作, 普通用户没有这个权限, 需要借助管理员权限才能完成该操作。</p>
+<p><code>普通用户借助管理员权限执行某些shell命令, 需要在命令前加关键字sudo, 但是普通用户默认是没有使用 sudo的资格的, 需要修改 /etc/sudoers 文件 </code>。</p>
+<p>普通用户添加sudo权限</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法1-只修改所有者:</span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo <span class="built_in">chown</span> 新的所有者 文件名</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法2-同时修改所有者和所属组:</span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo <span class="built_in">chown</span> 新的所有者:新的组名 文件名</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件所有者：b.txt 属于 robin 用户</span></span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rw-rw-rw- 2 robin robin 2929 Apr 14 18:53 b.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将 b.txt 的所有者修改为 luffy</span></span><br><span class="line">robin@OS:~/Linux$ sudo chown luffy b.txt</span><br><span class="line">[sudo] password for robin: </span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rw-rw-rw- 2 luffy robin 2929 Apr 14 18:53 b.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改文件所有者和文件所属组</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件所有者和所属组</span></span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rw-rw-rw- 2 luffy robin 2929 Apr 14 18:53 b.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时修改文件所有者和文件所属组</span></span><br><span class="line">robin@OS:~/Linux$ sudo chown robin:luffy b.txt </span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rw-rw-rw- 2 robin luffy 2929 Apr 14 18:53 b.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改文件所属组"><a href="#修改文件所属组" class="headerlink" title="修改文件所属组"></a>修改文件所属组</h2><blockquote>
+<p>普通用户没有修改文件所属组的权限, 如果需要修改需要借助管理员权限才能完成，需要使用的命令是<code>chgrp</code>。当然了这个属性的修改也可以使用<code>chown</code>命令来完成。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">只修改文件所属的组, 普通用户没有这个权限, 借助管理员的权限</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: sudo <span class="built_in">chgrp</span> 新的组 文件名</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件所属组信息</span></span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rw-rw-rw- 2 robin luffy 2929 Apr 14 18:53 b.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改文件所属的组</span></span><br><span class="line">robin@OS:~/Linux$ sudo chgrp robin b.txt </span><br><span class="line">robin@OS:~/Linux$ ll b.txt </span><br><span class="line">-rw-rw-rw- 2 robin robin 2929 Apr 14 18:53 b.txt</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h1><h2 id="tree命令"><a href="#tree命令" class="headerlink" title="tree命令"></a>tree命令</h2><blockquote>
+<p>该命令的作用是<code>以树状结构显示目录</code>, tree工具默认是没有的, 需要手动安装, 系统版本不同安装方式也不尽相同:</p>
+<ul>
+<li>ubuntu: <code>sudo apt install tree</code></li>
+<li>centos: <code>sudo yum install tree</code></li>
+</ul>
+<p>如果是基于管理员用户安装软件，不需要加sudo。该命令有一个常用参数 <code>-L</code>, 即 (layer) 显示目录的层数。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法格式</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tree [-L n]         <span class="comment"># 查看当前目录的结构, n为显示的目录层数</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tree 目录名  [-L n]	<span class="comment"># 查看指定目录的结构, n为显示的目录层数</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">只显示1层</span></span><br><span class="line">[root@VM-8-14-centos ~]# tree -L 1</span><br><span class="line">.</span><br><span class="line">|-- ace</span><br><span class="line">|-- file</span><br><span class="line">|-- ipc.tar.gz</span><br><span class="line">|-- link.lnk -&gt; /root/luffy/onepiece.txt</span><br><span class="line">`-- luffy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示2层目录</span></span><br><span class="line">[root@VM-8-14-centos ~]# tree -L 2</span><br><span class="line">.</span><br><span class="line">|-- ace</span><br><span class="line">|   `-- brother</span><br><span class="line">|-- file</span><br><span class="line">|   |-- dir</span><br><span class="line">|   |-- haha.tar.gz</span><br><span class="line">|   |-- hello</span><br><span class="line">|   |-- link -&gt; /root/file/test</span><br><span class="line">|   |-- pipe-2</span><br><span class="line">|   |-- subdir</span><br><span class="line">|   `-- test</span><br><span class="line">|-- ipc.tar.gz</span><br><span class="line">|-- link.lnk -&gt; /root/luffy/onepiece.txt</span><br><span class="line">`-- luffy</span><br><span class="line">    |-- get</span><br><span class="line">    `-- onepiece.txt</span><br><span class="line"></span><br><span class="line">显示详细信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h2><blockquote>
+<p>pwd命令用户当前所在的工作目录, 没有参数, 直接执行该命令即可。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前用户在哪个目录中, 所在的目录一般称之为工作目录</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy/get/onepiece]# pwd</span><br><span class="line">/root/luffy/get/onepiece		# 当前工作目录</span><br></pre></td></tr></table></figure>
+
+<h2 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h2><blockquote>
+<p>使用<code>touch</code>命令可以创建一个<code>新的空文件</code>, 如果指定的文件是已存在的, 只会更新文件的修改日期, 对内容没有任何影响。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法: <span class="built_in">touch</span> 文件名</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看目录信息</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 3 root root 4096 Jan 25 17:38 get</span><br><span class="line">-rw-r--r-- 2 root root   37 Jan 25 17:26 onepiece.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个新的文件 robin.txt</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# touch robin.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">再次查看目录中的文件信息, 发现 robin.txt是空的, 大小为 0</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 3 root root 4096 Jan 25 17:38 get</span><br><span class="line">-rw-r--r-- 2 root root   37 Jan 25 17:26 onepiece.txt</span><br><span class="line">-rw-r--r-- 1 root root    0 Jan 25 17:54 robin.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">touch</span> 后的参数指定一个已经存在的文件名</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# touch onepiece.txt </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">继续查看目录中的文件信息, 发现文件时间被更新了: 37 Jan 25 17:26 --&gt; 37 Jan 25 17:54</span></span><br><span class="line">[root@VM-8-14-centos ~/luffy]# ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 3 root root 4096 Jan 25 17:38 get</span><br><span class="line">-rw-r--r-- 2 root root   37 Jan 25 17:54 onepiece.txt</span><br><span class="line">-rw-r--r-- 1 root root    0 Jan 25 17:54 robin.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a>which命令</h2><blockquote>
+<p>which命令可以查看要执行的命令所在的实际路径, 命令解析器工作的时候也会搜索这个目录。<code>需要注意的是该命令只能查看非内建的shell指令所在的实际路径, 有些命令是直接写到内核中的, 无法查看</code>。</p>
+<p>我们使用的大部分shell命令都是放在系统的<code>/bin</code>或者<code>/usr/bin</code>目录下:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">由于使用的Linux版本不同, 得到的路径也会有不同</span></span><br><span class="line">[root@VM-8-14-centos ~]# which ls</span><br><span class="line">alias ls=&#x27;ls --color=auto&#x27;</span><br><span class="line">        /usr/bin/ls</span><br><span class="line">        </span><br><span class="line">[root@VM-8-14-centos ~]# which date</span><br><span class="line">/usr/bin/date</span><br><span class="line"></span><br><span class="line">[root@VM-8-14-centos ~]# which cp</span><br><span class="line">alias cp=&#x27;cp -i&#x27;</span><br><span class="line">        /usr/bin/cp</span><br><span class="line">        </span><br><span class="line">[root@VM-8-14-centos ~]# which mv</span><br><span class="line">alias mv=&#x27;mv -i&#x27;</span><br><span class="line">        /usr/bin/mv</span><br><span class="line">        </span><br><span class="line">[root@VM-8-14-centos ~]# which pwd</span><br><span class="line">/usr/bin/pwd</span><br><span class="line"></span><br><span class="line">显示详细信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="重定向命令"><a href="#重定向命令" class="headerlink" title="重定向命令"></a>重定向命令</h2><blockquote>
+<p>关于重定向使用最多的是就是<code>输出重定向</code>, 顾名思义就是修改输出的数据的位置, 通过重定向操作我们可以非常方便的进行文件的复制, 或者文件内容的追加。输出重定向使用的不是某个关键字而是符号 <code>&gt;</code>或者<code>&gt;&gt;</code>。</p>
+<ul>
+<li><code>&gt;</code>: 将文件内容写入到指定文件中, 如果文件中已有数据, 则会使用新数据覆盖原数据</li>
+<li><code>&gt;&gt;</code>: 将输出的内容追加到指定的文件尾部</li>
+</ul>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出的重定向举例: <span class="built_in">printf</span>默认是要将数据打印到终端, 可以修改默认的输出位置 =&gt; 重定向到某个文件中</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关键字 &gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行一个shell指令, 获得一个输出, 这个输出默认显示到终端, 如果要将其保存到文件中, 就可以使用重定向</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果当前目录下test.txt不存在, 会被创建, 如果存在, 内容被覆盖</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">date</span> &gt; test.txt</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">日期信息被写入到文件 test.txt中</span></span><br><span class="line">robin@OS:~/Linux$ cat test.txt </span><br><span class="line">Wed Apr 15 09:37:52 CST 2020</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果不希望文件被覆盖, 而是追加, 需要使用 &gt;&gt;</span></span><br><span class="line">in@OS:~/Linux$ date &gt;&gt; test.txt</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">日期信息被追加到 test.txt中</span></span><br><span class="line">robin@OS:~/Linux$ cat test.txt </span><br><span class="line">Wed Apr 15 09:37:52 CST 2020</span><br><span class="line">Wed Apr 15 09:38:44 CST 2020</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">继续追加信息</span></span><br><span class="line">robin@OS:~/Linux$ date &gt;&gt; test.txt</span><br><span class="line">robin@OS:~/Linux$ cat test.txt    </span><br><span class="line">Wed Apr 15 09:37:52 CST 2020</span><br><span class="line">Wed Apr 15 09:38:44 CST 2020</span><br><span class="line">Wed Apr 15 09:39:03 CST 2020</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-05</span>
+            
+                <span>该篇文章被 Starry Huang</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>漫长寒夜 白昼无期</span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+</html>

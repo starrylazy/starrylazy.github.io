@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <style>
+        body
+        {
+            font-family: "Times New Roman", Helvetica, Tahoma, Arial,   LXGW WenKai   "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif !important;
+
+        }
+    </style>
+
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="linux的一些简单介绍" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>starry | blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">starry</a> 
+            <span class="description">starry`s blog</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            linux的一些简单介绍
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><p>转载自 爱编程的大丙</p>
+<p>文章链接: <a target="_blank" rel="noopener" href="https://subingwen.cn/linux/version-path/">https://subingwen.cn/linux/version-path/</a></p>
+<h1 id="Linux介绍"><a href="#Linux介绍" class="headerlink" title="Linux介绍"></a>Linux介绍</h1><h2 id="Linux的诞生"><a href="#Linux的诞生" class="headerlink" title="Linux的诞生"></a>Linux的诞生</h2><blockquote>
+<p>1991年，GNU计划已经开发出了许多工具软件，最受期盼的GNU C编译器已经出现，GNU的操作系统核心HURD一直处于实验阶段(GNU工程从1984年起就在做这件事)，没有任何可用性，实质上也没能开发出完整的GNU操作系统。</p>
+<p>也是这一年, <code>Linux</code>诞生了, <code>Linux 是 UNIX 操作系统的一个克隆系统, 但是Linux是开源的。</code> 那时候它只是一个系统内核, 没有与之配套的应用软件，这时候 <code>Linux</code> 和 <code>GNU</code>一拍即合, 就有了我们现在使用的操作系统，GNU奠定了Linux用户基础和开发环境。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_17_19_1563551070448.png" title="1563551070448" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_17_19_1563551070448.png" alt="1563551070448"></a></p>
+<ul>
+<li><p>Linux时间线</p>
+<ul>
+<li>1991年初，林纳斯·托瓦兹开始在一台386sx兼容微机上学习minix操作系统。</li>
+<li>1991年4月，林纳斯·托瓦兹开始酝酿并着手编制自己的操作系统。</li>
+<li>1991 年4 月13 日在comp.os.minix 上发布说自己已经成功地将 bash 移植到了minix 上，而且已经爱不释手、不能离开这个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/shell/99702">shell</a>软件了。</li>
+<li>1991年的10月5日，林纳斯·托瓦兹在comp.os.minix新闻组上发布消息，正式向外宣布Linux内核的诞生</li>
+<li>1992年Linux与其他GNU软件结合，完全自由的操作系统正式诞生。该操作系统往往被称为“GNU&#x2F;Linux”</li>
+<li>1993年，大约有100余名程序员参与了Linux内核代码编写&#x2F;修改工作，其中核心组由5人组成，此时Linux 0.99的代码大约有十万行，用户大约有10万左右。</li>
+<li>1994年3月，Linux1.0发布，代码量17万行，当时是按照完全自由免费的协议发布，随后正式采用GPL协议。</li>
+</ul>
+</li>
+<li><p>Linux主要特性</p>
+<ul>
+<li><p>Linux是一个基于文件的操作系统</p>
+<blockquote>
+<p>操作系统需要和硬件进行交互, 对应Linux来说这些硬件都是文件，比如: 操作系统会将 <code>硬盘</code>, <code>鼠标</code>, <code>键盘</code>, <code>显示屏</code>等抽象成一个设备文件来进行管理。</p>
+</blockquote>
+</li>
+<li><p>Linux 操作系统是一种自由软件，是免费的，并且公开源代码。</p>
+</li>
+<li><p>可以同时登陆多个用户，并且每个用户可以同时运行多个应用程序。</p>
+</li>
+<li><p>提供了友好的图形用户界面, 操作简单， 易于快速上手。</p>
+</li>
+<li><p>支持多平台（这里指的是基于不同CPU架构的平台，比如国产Linux使用的龙芯等）。</p>
+</li>
+</ul>
+</li>
+<li><p><code>Linux</code>的发音 – 关于 Linux 的发音有各种说法，主要有两种:</p>
+<ul>
+<li>第一种读作 <code>[&#39;linΛks]</code> ，汉语发音：“喱呐科斯”</li>
+<li>第二种是按照 Torvalds 的说法，Linux 中 <code>Li 中 i 的发音</code>类似于 <code>Minix 中 i 的发音</code>，而 <code>nux 中 u 的发音</code>类似于英文单词 <code>pronounce 中第一个 o 的发音</code>。根据 Torvalds 对此的解释，依照国际音标其发音为<code>[&#39;linэks]</code>。在网络上有一份 Torvalds 本人说话的音频，音频中的内容为<code>“Hello, this is Linus Torvalds, and I pronounce Linux as Linux”。</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><blockquote>
+<p>在学习和使用Linux的过程中, 我们经常会见到一些特有名词, 下面给大家介绍一些常用的:</p>
+</blockquote>
+<ul>
+<li><code>GNU</code>：Gnu’s Not Unix. 可以理解成一种口号，最早由Richard Stallman呼吁并倡导的，号召软件自由。</li>
+<li><code>GPL</code>：General Public License. GNU通用公共许可证，GPL 授予程序的接受方下述的权利，即 GPL 所倡导的“自由”：<ul>
+<li>可以以任何目的运行所购买的程序；</li>
+<li>在得到程序代码的前提下，可以以学习为目的，对源程序进行修改；</li>
+<li>可以对复制件进行再发行；</li>
+<li>对所购买的程序进行改进，并进行公开发布。</li>
+</ul>
+</li>
+<li><code>LGPL</code>(GNU Lesser General Public License): LGPL是GPL的一个为主要为类库使用设计的开源协议。<ul>
+<li>LGPL允许商业软件通过类库引用(link)方式使用LGPL类库而不需要开源商业软件的代码。</li>
+<li>采用LGPL协议的开源代码可以被商业软件作为类库引用并发布和销售。</li>
+</ul>
+</li>
+<li><code>BSD</code>开源协议: BSD开源协议是一个给于使用者很大自由的协议。基本上使用者可以”为所欲为”，以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：<ul>
+<li>如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</li>
+<li>不可以用开源代码的作者&#x2F;机构名字和原来产品的名字做市场推广。</li>
+<li>BSD代码鼓励代码共享，但需要尊重代码作者的著作权。</li>
+</ul>
+</li>
+<li><code>FSF</code>：自由软件基本会，给GNU提供资金支付的，毕竟没钱难成事啊。</li>
+<li><code>自由软件</code>：GNU项目下的所有软件都基于GPL许可证（非GNU项目也可使用GPL），都是自由软件。</li>
+<li><code>开源软件</code>：是美国Open Source Initiative协会定义，软件开放源代码。</li>
+<li><code>POSIX：</code>（Portable Operating System Interface for Computing Systems）是由 IEEE 和 ISO&#x2F;IEC 开发的一套标准。POSIX 标准是对 UNIX 操作系统的经验和实践的总结，<code>对操作系统调用的服务接口进行了标准化，保证所编制的应用程序在源代码一级可以在多种操作系统上进行移植。</code></li>
+</ul>
+<h2 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h2><blockquote>
+<p>Linux 的发行版本众多，曾有人收集过超过 300 种的发行版本。这里对最常用的发行版本进行简单的介绍，下表 为用户经常使用的版本。大家可以去相关网址查找，选择适合的版本使用。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_32_4_1563551102188.png" title="1563551102188" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_32_4_1563551102188.png" alt="1563551102188"></a></p>
+<table>
+<thead>
+<tr>
+<th>版本名称</th>
+<th>网 址</th>
+<th>特 点</th>
+<th>软件包管理器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Debian Linux</td>
+<td><a target="_blank" rel="noopener" href="http://www.debian.org/">www.debian.org</a></td>
+<td>开放的开发模式，并且易于进行软件包升级</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Fedora Core</td>
+<td><a target="_blank" rel="noopener" href="http://www.redhat.com/">www.redhat.com</a></td>
+<td>拥有数量庞大的用户，优秀的社区技术支持， 并且有许多创新</td>
+<td>up2date （rpm) yum（rpm）</td>
+</tr>
+<tr>
+<td>CentOS</td>
+<td><a target="_blank" rel="noopener" href="http://www.centos.org/">www.centos.org</a></td>
+<td>CentOS 是一种对 RHEL（Red Hat Enterprise Linux）源代码再编译的产物，由于 Linux 是 开发源代码的操作系统，并不排斥基于源代 码的再分发，CentOS 就是将商业的 Linux 操 作系统 RHEL 进行源代码再编译后分发，并 在 RHEL 的基础上修正了不少已知的漏洞</td>
+<td>rpm</td>
+</tr>
+<tr>
+<td>SUSE Linux</td>
+<td><a target="_blank" rel="noopener" href="http://www.suse.com/">www.suse.com</a></td>
+<td>专业的操作系统，易用的 YaST 软件包管理 系统</td>
+<td>YaST（rpm），第 三方 apt（rpm）软 件库</td>
+</tr>
+<tr>
+<td>Gentoo Linux</td>
+<td><a target="_blank" rel="noopener" href="http://www.gentoo.org/">www.gentoo.org</a></td>
+<td>高度的可定制性，使用手册完整</td>
+<td>portage</td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td><a target="_blank" rel="noopener" href="http://www.ubuntu.com/">www.ubuntu.com</a></td>
+<td>优秀易用的桌面环境，基于 Debian 构建</td>
+<td>apt</td>
+</tr>
+</tbody></table>
+<h2 id="Linux-内核"><a href="#Linux-内核" class="headerlink" title="Linux 内核"></a>Linux 内核</h2><blockquote>
+<p>Linux 系统从应用角度来看，分为内核空间和用户空间两个部分。内核空间是 Linux 操作系统的主要部分，但是仅有内核的操作系统是不能完成用户任务的。丰富并且功能强大的应用程序包是一个操作系统成功的必要件。这个和武林秘籍一样, 不仅得有招式还得有内功心法。</p>
+<p>Linux 的内核主要由 5 个子系统组成：进程调度、内存管理、虚拟文件系统、网络接口、进程间通信。下面将依次讲解这 5 个子系统。</p>
+</blockquote>
+<ul>
+<li><p>进程调度 SCHED</p>
+<blockquote>
+<p>进程调度指的是系统对进程的多种状态之间转换的策略。Linux 下的进程调度有 3 种策略：SCHED_OTHER、SCHED_FIFO 和 SCHED_RR。</p>
+</blockquote>
+<ul>
+<li>SCHED_OTHER：分时调度策略（默认），是用于针对普通进程的时间片轮转调度策略。</li>
+<li>SCHED_FIFO：实时调度策略，是针对运行的实时性要求比较高、运行时间短的进程调度策略</li>
+<li>SCHED_RR：实时调度策略，是针对实时性要求比较高、运行时间比较长的进程调度策略。</li>
+</ul>
+</li>
+<li><p>内存管理 MMU</p>
+<ul>
+<li>内存管理是多个进程间的内存共享策略。在Linux中，内存管理主要说的是虚拟内存。</li>
+<li>虚拟内存可以让进程拥有比实际物理内存更大的内存，可以是实际内存的很多倍。</li>
+<li>每个进程的虚拟内存有不同的地址空间，多个进程的虚拟内存不会冲突。</li>
+</ul>
+</li>
+<li><p>虚拟文件系统 VFS</p>
+<ul>
+<li>在 Linux 下支持多种文件系统，如 ext、ext2、minix、umsdos、msdos、vfat、ntfs、proc、smb、ncp、iso9660、sysv、hpfs、affs 等。</li>
+<li>目前 Linux 下最常用的文件格式是 ext2 和 ext3。</li>
+</ul>
+</li>
+<li><p>网络接口</p>
+<blockquote>
+<p>Linux 是在 Internet 飞速发展的时期成长起来的，所以 Linux 支持多种网络接口和协议。<code>网络接口分为网络协议和驱动程序</code>，网络协议是一种网络传输的通信标准，而网络驱动则是对硬件设备的驱动程序。Linux 支持的网络设备多种多样，几乎目前所有网络设备都有驱动程序。</p>
+</blockquote>
+</li>
+<li><p>进程间通信</p>
+<blockquote>
+<p>Linux 操作系统支持多进程，进程之间需要进行数据的交流才能完成控制、协同工作等功能，Linux 的进程间通信是从 UNIX 系统继承过来的。Linux 下的进程间的通信方式主要有<code>管道</code>、<code>信号</code>、<code>消息队列</code>、<code>共享内存</code>和<code>套接字</code>等方法。</p>
+</blockquote>
+<a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_16_26_kernel.jpg.jpeg" title="kernel" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_16_26_kernel.jpg.jpeg" alt="kernel" style="zoom:33%;" /></a></li>
+</ul>
+<h1 id="Linux-目录"><a href="#Linux-目录" class="headerlink" title="Linux 目录"></a>Linux 目录</h1><blockquote>
+<p>与 Windows 下的文件组织结构不同，Linux 不使用磁盘分区符号来访问文件系统，而是将整个文件系统表示成树状的结构，Linux 系统每增加一个文件系统都会将其加入到这个树中。<br>操作系统文件结构的开始，只有一个单独的顶级目录结构，叫做<code>根目录</code>。所有一切都<code>从“根”开始，用“/”代表</code>，并且延伸到子目录。Linux 则通过“挂接”的方式把所有分区都放置在“根”下各个目录里。一个 Linux 系统的文件结构如下图所示。</p>
+</blockquote>
+<h2 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h2><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_54_21_1563553243830.png" title="1563553243830" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_54_21_1563553243830.png" alt="1563553243830" /></a>
+
+<p>在linux中根目录的子目录结构相对是固定的(名字固定), 不同的目录功能是也是固定的</p>
+<ul>
+<li><code>bin</code>: binary, 二进制文件目录, 存储了可执行程序, 今天要将的命令对应的可执行程序都在这个目录中</li>
+<li><code>sbin</code>: super binary, root用户使用的一些二进制可执行程序</li>
+<li><code>etc</code>: 配置文件目录, 系统的或者用户自己安装的应用程序的配置文件都存储在这个目录中</li>
+<li><code>lib</code>: library, 存储了一些动态库和静态库，给系统或者安装的软件使用</li>
+<li><code>media</code>: 挂载目录, 挂载外部设备，比如: 光驱, 扫描仪</li>
+<li><code>mnt</code>: 临时挂载目录, 比如我们可以将U盘临时挂载到这个目录下</li>
+<li><code>proc</code>: 内存使用的一个映射目录, 给操作系统使用的</li>
+<li><code>tmp</code>: 临时目录, 存放临时数据, 重启电脑数据就被自动删除了</li>
+<li><code>boot</code>: 存储了开机相关的设置</li>
+<li><code>home</code>: 存储了普通用户的家目录，家目录名和用户名相同</li>
+<li><code>root</code>: root用户的家目录</li>
+<li><code>dev</code>: device , 设备目录, Linux中一切皆文件, 所有的硬件会抽象成文件存储起来，比如：键盘， 鼠标</li>
+<li><code>lost+found</code>: 一般时候是空的, 电脑异常关闭&#x2F;崩溃时用来存储这些无家可归的文件, 用于用户系统恢复</li>
+<li><code>opt</code>: 第三方软件的安装目录</li>
+<li><code>var</code>: 存储了系统使用的一些经常会发生变化的文件， 比如：日志文件</li>
+<li><code>usr</code>: <code>unix system resource</code>, 系统的资源目录<ul>
+<li><code>/usr/bin</code>: 可执行的二进制应用程序</li>
+<li><code>/usr/games</code>: 游戏目录</li>
+<li><code>/usr/include</code>: 包含的标准头文件目录</li>
+<li><code>/usr/local</code>: 和<code>opt</code>目录作用相同, 安装第三方软件</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>对于用户自己的文件, 一般都是存放到自己的家目录中, 也就是 <code>/home/用户名</code>里边, 通过指定的相应的路径就可以找到这个文件了。关于路径的指定的有两种方式：<code>相对路径</code>和<code>绝对路径</code>。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这是在root用户的家目录中, 并且展示了家目录中的子目录的从属关系</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">方括号中的内容是[用户名@主机名 当前位置]</span></span><br><span class="line">[root@VM-8-14-centos ~]# tree</span><br><span class="line">.</span><br><span class="line">|-- ace</span><br><span class="line">|   `-- brother</span><br><span class="line">|       `-- finally</span><br><span class="line">|           `-- die.txt</span><br><span class="line">`-- luffy</span><br><span class="line">    `-- get</span><br><span class="line">        `-- onepiece</span><br><span class="line">            `-- haha.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h2><p>相对路径：相对路径就是相对于当前文件的路径。在Linux中有两个表示路径的特殊符号:</p>
+<ul>
+<li><p><code>./</code>：代表目前所在的目录，也可以使用 <code>.</code>表示。</p>
+</li>
+<li><p><code>../</code>：代表当前目录的上一层目录，也可以使用 <code>..</code>表示。</p>
+</li>
+<li><p>以上边的目录为例, 从当前root家目录 <code>/root</code>, 进入到 <code>onepiece</code>目录使用相对路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用<span class="built_in">cd</span>命令</span></span><br><span class="line">[root@VM-8-14-centos ~]# cd luffy/get/onepiece/</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>接下来研究一下相对路径的优缺点:</p>
+<ul>
+<li>优点: 简洁, 目录相对较短, 书写方便</li>
+<li>缺点: 变更工作目录之后, 使用相同的相对路径就找不到原来的文件了</li>
+</ul>
+<h2 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h2><p>绝对路径：从系统磁盘起始节点开始描述的路径。</p>
+<ul>
+<li><p>Linux：起始节点为<code>根目录</code>，比如： <code>/root/luffy/get/onepiece</code></p>
+</li>
+<li><p>Windows: 起始节点为某个磁盘的盘符，比如：<code>f:\\root\\luffy\\get\\onepiece</code></p>
+</li>
+<li><p>以上边的目录为例, 从当前root家目录 <code>/root</code>, 进入到 <code>onepiece</code>目录使用绝对路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-14-centos ~]# cd /root/luffy/get/onepiece/</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>接下来研究一下绝对路径的优缺点:</p>
+<ul>
+<li>优点: 在操作系统的任意位置都可以通过绝对路径访问到对应的文件</li>
+<li>缺点: 字符串较长, 书写起来比较麻烦, 看起来也不够简洁</li>
+</ul>
+<h1 id="3-命令解析器"><a href="#3-命令解析器" class="headerlink" title="3. 命令解析器"></a>3. 命令解析器</h1><blockquote>
+<p>在Linux中需要通过终端执行对应的命令来完成某些操作, 那么这些命令是如何被执行的呢?</p>
+<p>这些命令都是通过命令解析器解析完成并执行的, 如果用户在终端输入是正确的内部指令, 命令解析器就执行这个命令, 如果不是正确的指令, 则提示命令无法解析。</p>
+<p>下图是Windows是命令行窗口，平台虽然不同但是命令解析器的工作原理是相同的。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_11_4_55_%25E4%25BD%25A0%25E4%25BB%2596%25E5%25A6%2588%25E7%259A%2584%25E5%25BF%25AB%25E5%25BC%2580%25E6%259C%25BA.gif" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_11_4_55_%25E4%25BD%25A0%25E4%25BB%2596%25E5%25A6%2588%25E7%259A%2584%25E5%25BF%25AB%25E5%25BC%2580%25E6%259C%25BA.gif" alt="img"></a></p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><blockquote>
+<p>命令解析器在Linux操作系统中就是一个进程(运行的应用程序), 它的名字叫做<code>bash</code>通常我们更习惯将其称之为<code>shell (即: sh)</code>。他们之间的渊源是这样的，在<code>Unix</code>操作系统诞生之后一个叫伯恩(Bourne )的人为其编写了命令解析器取名为<code>shell</code>, <code>Linux</code>操作系统诞生之后伯恩再次改写了<code>shell (sh)</code>, 将其称之为<code>bash (Bourne Again SHell)</code>, bash 就是 sh 的增强版本。</p>
+<p>在<code>Linux</code>操作系统中默认使用的命令解析器是 <code>bash</code>, 当然也同样支持使用<code>sh</code>。当用户打开一个终端窗口，并输入相关指令， 按回车键， 这时候命令解析器就开始工作了， 具体步骤如下：</p>
+</blockquote>
+<ul>
+<li><p>在Linux中有一个叫做<code>PATH</code>的环境变量, 里边存储了一些系统目录 (<code>windows也有, 叫 Path</code>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过 <span class="built_in">echo</span> 命令可以查看环境变量 PATH 中的值, 在shell中变量名前加 $ 就是取值</span></span><br><span class="line">[root@VM-8-14-centos ~]# echo $PATH</span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令解析器需要依次搜索 <code>PATH</code>中的各个目录, 检查这些目录中是否有用户输入的指令</p>
+<ul>
+<li><p>如果找到了, 执行该目录下的可执行程序, 用户输入的命令就被执行完毕了</p>
+</li>
+<li><p>如果没有找到, 继续搜索其他目录, 最后还是没有找到, 会提示命令找不到, 因此无法被执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-14-centos ~]# asdjflksd</span><br><span class="line">-bash: asdjflksd: command not found</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="命令提示行"><a href="#命令提示行" class="headerlink" title="命令提示行"></a>命令提示行</h2><blockquote>
+<p>在Linux终端中, 输入要执行的指令之前会有想用的命令提示, 我们将其称之为命令提示行, 例如:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-14-centos ~/luffy/get/onepiece]#</span><br><span class="line">[robin@VM-8-14-centos ~/luffy/get/onepiece]$ </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>root</code> : 当前登录的用户的用户名</p>
+</li>
+<li><p><code>@</code>: at -&gt; 在</p>
+</li>
+<li><p><code>VM-8-14-centos</code>: 主机名, 在安装这个linux操作系统的时候手动指定, 可以修改</p>
+<ul>
+<li><p><code>~</code>: 当前用户的家目录</p>
+<ul>
+<li>在linux中有很多用户, 每个用户都用一个属于自己的目录, 这个目录称之为家目录</li>
+<li>普通用户家目录<code>/home/用户名</code>, root用户家目录 <code>/root</code></li>
+</ul>
+</li>
+<li><p><code>~/luffy/get/onepiece</code>: 当前用户所在的工作目录, 也可以使用 <code>pwd</code>命令查看</p>
+</li>
+<li><p><code>#</code>: 代表当前用户是root用户</p>
+</li>
+<li><p><code>$</code>: 当前用户是普通用户, 也就是说例子中的 <code>robin</code>是一个普通用户</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="命令行快捷键"><a href="#命令行快捷键" class="headerlink" title="命令行快捷键"></a>命令行快捷键</h2><blockquote>
+<p>我们在命令行输入一些指令的时候, 经常需要移动光标, 或者删除一些字符, 对应的一些快捷键操作如下表:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Tab</code></td>
+<td>命令自动补齐</td>
+<td>在终端中输入 某个命令的前一个或若干个字符, 再按Tab键</td>
+</tr>
+<tr>
+<td><code>Ctrl+p</code></td>
+<td>显示输入的上一个历史命令</td>
+<td>从输入的最后一个命令往前倒, 也可以使用 <code>↑</code>键</td>
+</tr>
+<tr>
+<td><code>Ctrl+n</code></td>
+<td>显示输入的下一个历史命令</td>
+<td>也可以使用 <code>↓</code>键</td>
+</tr>
+<tr>
+<td><code>Ctrl+a</code></td>
+<td>光标移动命命令行首</td>
+<td>也可以使用 <code>Home</code>键</td>
+</tr>
+<tr>
+<td><code>Ctrl+e</code></td>
+<td>光标移动命命令行尾</td>
+<td>也可以使用 <code>End</code>键</td>
+</tr>
+<tr>
+<td><code>Ctrl+u</code></td>
+<td>删除光标前的部分字符串</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>Ctrl+k</code></td>
+<td>删除光标后的部分字符串</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>→</code></td>
+<td>光标向右移动一个字符</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>←</code></td>
+<td>光标向右移动一个字符</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>Backspace/Delete</code></td>
+<td>删除光标前&#x2F;后的一个字符</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_16_25_image-20200414103602733.png" title="image-20200414103602733" class="gallery-item" style="box-shadow: none;"> <img src="https://jihulab.com/starry/pic/-/raw/main/pictures/2023/09/5_10_16_25_image-20200414103602733.png" alt="image-20200414103602733"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-05</span>
+            
+                <span>该篇文章被 Starry Huang</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/linux/'>
+                            linux
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>漫长寒夜 白昼无期</span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+</html>

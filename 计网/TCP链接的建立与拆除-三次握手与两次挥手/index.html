@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <style>
+        body
+        {
+            font-family: "Times New Roman", Helvetica, Tahoma, Arial,   LXGW WenKai   "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif !important;
+
+        }
+    </style>
+
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="TCP链接的建立与拆除-三次握手与四次挥手" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>starry | blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">starry</a> 
+            <span class="description">starry`s blog</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            TCP链接的建立与拆除-三次握手与四次挥手
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="基本认识"><a href="#基本认识" class="headerlink" title="基本认识"></a>基本认识</h2><h3 id="TCP头格式"><a href="#TCP头格式" class="headerlink" title="TCP头格式"></a>TCP头格式</h3><p><a target="_blank" rel="noopener" href="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230534096.png" title="TCP 头格式" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230534096.png" alt="TCP 头格式"></a></p>
+<p><strong>源目的端口号</strong>：整个tcp头一共20个字节，前四个字节分别是源端口号和目的端口号，这是最基本的用于传输层的分解与复用</p>
+<p><strong>序列号</strong>：在连接建立是初始化一个随机数，然后每次递增上个tcp包发送的字节数，用来保持报文段的有序</p>
+<p><strong>确认应答号</strong>：标识接收方下一次希望收到报文段的序列号，同时表示这个序列号之前的包已被正确接受，用来解决丢包的问题</p>
+<p><strong>控制位</strong>：都是只有一个bit</p>
+<ul>
+<li><strong>ACK</strong>：表示确实，当这一位是1时，确认应答号才有效，除开建立连接时的SYN包以外的包的这一位都为1</li>
+<li><strong>RST</strong>：重置，连接出现错误，强制断开连接</li>
+<li><strong>SYN</strong>：同步，希望建立连接，并给序列号一个随机初始值</li>
+<li><strong>FIN</strong>：结束，希望断开连接</li>
+</ul>
+<p><strong>窗口大小</strong>：是用于流量控制的</p>
+<h3 id="UDP头格式"><a href="#UDP头格式" class="headerlink" title="UDP头格式"></a>UDP头格式</h3><p>很简单就八个字节，两个端口号就占了四个字节，外加一个字节记录包的长度，一个字节的校验和。包长度是指包括头和数据的整个包的长度，校验和用于整个包的受损检验</p>
+<p><strong>TCP与UDP的区别</strong>：</p>
+<ol>
+<li>连接：一个是面向连接，一个没有连接，有连接就需要维持连接的头部和建立拆除连接的过程</li>
+<li>点对点</li>
+<li>可靠性：TCP包不能丢失，不能失序，不能出错，UDP只通过校验和保证包没有出错</li>
+<li>拥塞控制和流量控制</li>
+<li>首部开销</li>
+<li>分片：TCP大于MSS，就会在传输层分片，UDP不在传输层分片，直接在网络层进行IP分片，以满足MTU的限制。到达目标主机后也由网络层负责组装</li>
+</ol>
+<h3 id="TCP与UDP的应用场景"><a href="#TCP与UDP的应用场景" class="headerlink" title="TCP与UDP的应用场景"></a>TCP与UDP的应用场景</h3><p>这个没什么好说的，不允许丢包，不允许失序，保证数据可靠就用TCP，但是像是游戏，音视频通话，音视频服务可以允许丢包但是要求强实时性的就能用UDP，额外需要注意的就是DNS使用UDP协议</p>
+<blockquote>
+<p>为什么TCP又首部长度字段，但是UDP没有</p>
+</blockquote>
+<p>这个很好解释，因为TCP头部又可选的字段，可变长</p>
+<blockquote>
+<p>为什么TCP头部没有包长度字段</p>
+</blockquote>
+<p>可以根据IP包来算，IP包长度减去IP首部长度再减去TCP首部长度</p>
+<p>那按照这么说，UDP数据包长度不也多余了？？</p>
+<h2 id="TCP连接的建立"><a href="#TCP连接的建立" class="headerlink" title="TCP连接的建立"></a>TCP连接的建立</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p><a target="_blank" rel="noopener" href="https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost4/%E7%BD%91%E7%BB%9C/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.drawio.png" title="TCP 三次握手" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost4/%E7%BD%91%E7%BB%9C/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.drawio.png" alt="TCP 三次握手"></a></p>
+<p>观察上图，发现：除开close状态，其他转台转换都是在接收到对方的包之后发生的</p>
+<p>对于客户端：</p>
+<ul>
+<li>第一次状态转换：发送请求建立连接的包，SYN控制位置1，为序列号初始化一个值，由close状态转换为SYN_SENT状态</li>
+<li>第二次状态转换：收到服务器的第一次响应，这次响应包的SYN也为1，ACK为1，序列号被服务器初始化，确认应答按照上面提到的原则给出，客户端状态变成建立ESTABLISHED</li>
+</ul>
+<p>对于服务器：</p>
+<ul>
+<li>第一次没什么好说的，服务器开始监听端口号</li>
+<li>第二次状态转换：收到客户端的第一个SYN包，返回给客户端一个SYN包，也是整个过程中第二个、最后一个SYN包。</li>
+<li>第三次状态转换：收到客户端正儿八经第一个数据包，客户端考试传递数据，服务端变成ESTABLISHED状态</li>
+</ul>
+<p>上图的三个包也是就建立连接的三次握手，第一个SYN向服务端表示客户端的发送能力，第二个SYN表示客户端的接受能力和发送能力，因为是对第一个SYN的响应，第三次客户端正式开始发送数据，表示自己的接受能力，因为这次发送实际上也是对第二次SYN的响应</p>
+<h3 id="为什么是三次？"><a href="#为什么是三次？" class="headerlink" title="为什么是三次？"></a>为什么是三次？</h3><p>首先，显而易见的就是上一个段落所说的证明双方接受发送数据的能力，</p>
+<p>其次：</p>
+<ol>
+<li>避免不需要的历史连接：这个我觉得还是原来的证实客户端接受能力，这个说法有点牵强</li>
+<li>同步双方的序列号：这个好理解，客户端给出一个序列号，服务器给出一个对客户端序列号的响应并给出自己的序列号，最后客户端给出响应</li>
+<li>避免资源的浪费：假如两次握手的话，服务器在接收到客户端的SYN之后就会建立连接，要是服务器返回的ACK丢了怎么办？服务器建立了连接而客户端没有。</li>
+</ol>
+<h3 id="建立连接时初始化的序列号要不一样？"><a href="#建立连接时初始化的序列号要不一样？" class="headerlink" title="建立连接时初始化的序列号要不一样？"></a>建立连接时初始化的序列号要不一样？</h3><ol>
+<li>首先就是防止和历史连接间产生误解</li>
+<li>防止被别人猜到</li>
+</ol>
+<h3 id="讲一下MTU和MSS"><a href="#讲一下MTU和MSS" class="headerlink" title="讲一下MTU和MSS"></a>讲一下MTU和MSS</h3><p><a target="_blank" rel="noopener" href="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230633447.png" title="MTU 与 MSS" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230633447.png" alt="MTU 与 MSS"></a></p>
+<p>为什么有IP分段机制了，还要在传输层进行TCP分段，因为TCP有重传机制，要是在IP分段，一个IP包的丢失造成一个TCP包的不完整，这个时候要重传没有分段的整个TCP包，开销就大了。相较于在传输层分段，TCP包比较小。</p>
+<h3 id="第一次握手丢失之后，会怎么样？"><a href="#第一次握手丢失之后，会怎么样？" class="headerlink" title="第一次握手丢失之后，会怎么样？"></a>第一次握手丢失之后，会怎么样？</h3><p>第一次握手丢失，和服务器是完全没关系的，因为服务器压根就不知道这回事，超时之后客户端就会重传，并且这个TCP的包和之前的应该是完全一样的。</p>
+<p>讲一下细节，最大重传数和超时时间应该都是由内核参数决定的，最多五次，第一次1秒，第二次2秒，第三次3秒，依次类推。当最大重传次数次尝试都没有响应后，客户端断开连接</p>
+<h3 id="第二次握手丢失之后？"><a href="#第二次握手丢失之后？" class="headerlink" title="第二次握手丢失之后？"></a>第二次握手丢失之后？</h3><p>第二次握手丢失，对于客户端来说，现象也跟第一次握手丢失一样，客户端根本不知道丢失的是哪一次，只知道自己的第一次握手没有响应，因此客户端会像上一段落所说的一样重传</p>
+<p>对于服务器呢？第二次报文丢失意味着接收不到第三次握手，服务器以为第二次报文丢失了，当然也可能是第三次报文丢失了，对于服务器来说都一样，他会重传第二次报文</p>
+<p>重传次数有另外一个内核参数决定，所有尝试失败之后，断开连接</p>
+<h3 id="第三次握手丢失？"><a href="#第三次握手丢失？" class="headerlink" title="第三次握手丢失？"></a>第三次握手丢失？</h3><p>类比上一个段落，这次服务器还是会以为第二次报文可能丢失了，重传第二次报文。</p>
+<p>但是第三次握手的报文不会由客户端重传。</p>
+<h3 id="半连接队列、全连接队列、SYN攻击"><a href="#半连接队列、全连接队列、SYN攻击" class="headerlink" title="半连接队列、全连接队列、SYN攻击"></a>半连接队列、全连接队列、SYN攻击</h3><p>粗略的根据名字猜一下，半链接队列就是服务器收到第一次握手之后维护状态的队列，全连接队列就是在服务器收到第三次握手之后维护状态的队列。</p>
+<p>实际如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230622886.png" title="正常流程" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230622886.png" alt="正常流程"></a></p>
+<p>全连接队列中的数据才会交给用户态中的程序</p>
+<p>如果有人伪造虚假的SYN报，IP报中的源ip和端口都是随便造的，那么服务器响应的第二次握手便会石沉大海，得不到响应。半连接队列只进不出，最后空间被占满，多余的请求被丢弃。</p>
+<h2 id="TCP断开连接"><a href="#TCP断开连接" class="headerlink" title="TCP断开连接"></a>TCP断开连接</h2><h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p><a target="_blank" rel="noopener" href="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230614791.png" title="客户端主动关闭连接 —— TCP 四次挥手" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230614791.png" alt="客户端主动关闭连接 —— TCP 四次挥手"></a></p>
+<p>挥手过程就是客户端和服务段互相挥手以及响应，为什么服务端对客户端的响应和服务端的挥手不能和为一次呢？因为从服务端被通知要断开连接之后，还有很多数据要处理和发送。这些数据处理和发送完了之后，服务器发送一个FIN，表示自己不会发送信息了，你也不必再听了。</p>
+<p>主动发起断开连接的一方才会有最后的TIME_WAIT，这段等待时间是等等对方会不会重传FIN，这就意味着响应的ACK可能丢失了</p>
+<h3 id="第一次挥手丢失了？"><a href="#第一次挥手丢失了？" class="headerlink" title="第一次挥手丢失了？"></a>第一次挥手丢失了？</h3><p>发生了什么服务器不知道，但是没有服务器的ACK，客户端就会一直重复FIN，重复几次后客户端不管三七二十一了，直接关闭连接。（最大重传次数是由某个内核参数决定的）</p>
+<h3 id="第二次挥手丢失？"><a href="#第二次挥手丢失？" class="headerlink" title="第二次挥手丢失？"></a>第二次挥手丢失？</h3><p>ACK是不会重传的，对于服务器来说，这次挥手丢失了他也不管，他也不会知道，但是客户端没有ACK，就会以为是自己第一次挥手丢了，于是重传第一次挥手，重复几次没结果之后就直接关闭连接</p>
+<h3 id="第三次挥手丢失？"><a href="#第三次挥手丢失？" class="headerlink" title="第三次挥手丢失？"></a>第三次挥手丢失？</h3><p>主动断开连接的一方在收到第一次挥手的响应之后，进入FIN_WAIT_2状态，如果主动断开连接的一方是调用的<code>close()</code>函数，那么这个状态就只会持续一段时间，如果是<code>shutdown()</code>函数，那么他就会一直死等对方的FIN。</p>
+<p>对于被动方，由于接收不到最后一次ACK，他就会一直重传第三次挥手，超过最大次数之后，直接断开连接。</p>
+<h3 id="第四次挥手丢失？"><a href="#第四次挥手丢失？" class="headerlink" title="第四次挥手丢失？"></a>第四次挥手丢失？</h3><p>重复一遍，ACK包是不会被主动重传的，被动方还是会觉得自己的包丢失了，重传第三次，重复多次没效果直接关闭。</p>
+<p>对于主动方，发完最后的ACK后会等待一段时间，这样做的目的是观察还有后续的被动方的FIN的重传没有，如果有，就意味着自己最后一次ACK丢失了，那就得重传。</p>
+<p>等待的这段时间被称为2MSL，即两倍报文最大生存时间，为什么是两倍最大生存时间，假使最后一个ACK丢失了，被动方没收到，有重传了一次FIN，那么从主动方最后一次ACK -&gt; ACK丢失 -&gt; 被动方重传FIN到达主动方 这个过程所花费的时间应该不会超过两倍报文最大生存时间。</p>
+<p>当然，每当主动方收到新的FIN，这个时间都会被重置成2MSL，因为每次都可能丢。</p>
+<h3 id="为什么TIME-WAIT状态是必须的？"><a href="#为什么TIME-WAIT状态是必须的？" class="headerlink" title="为什么TIME_WAIT状态是必须的？"></a>为什么TIME_WAIT状态是必须的？</h3><ol>
+<li><p>防止错误的四元组数据被错误的接受：想象一下两个主机中的两个端口号在短时间内重复两次建立连接拆除连接，那么第一次连接中的被延误的包有没有可能在第一次连接已经被拆除之后又被第二次连接错误的识别？</p>
+<p>这是完全有可能的，传输层数据包到达目的端口号后，最后的校验也就是看期望的序列号和包实际的序列号匹不匹配了，初始序列号是如何产生的？实际上是基于四元组和时间的，两次连接的四原则相同，时间又很接近，那就很容易误解。</p>
+</li>
+<li><p>保证被动方能正确关闭连接</p>
+<p>这个很好理解，在第四次挥手丢失里面说过</p>
+<p>但是如果没有等待时间，难不成服务器关闭不了了？那也不是，主动方发了ack就直接关了，假如ACK丢失了，服务器会重传FIN到主动方，这个时候主动方就不能理解这个FIN是什么意思了，因为原来的连接都没了，那么就会穿一个reset表示错误，这个时候被东方也就会关闭连接，但是这样总不优雅。</p>
+</li>
+</ol>
+<h3 id="TIME-WAIT状态过长的危害"><a href="#TIME-WAIT状态过长的危害" class="headerlink" title="TIME_WAIT状态过长的危害"></a>TIME_WAIT状态过长的危害</h3><p>主要是两方面危害</p>
+<ol>
+<li><p>占用系统资源，CPU 内存啥的，你得维护一个本可以结束的连接，肯定得要资源。</p>
+</li>
+<li><p>占用端口。</p>
+<p>这种情况只会在一种情况下出现，那就是同一个端口对同一个端口，也就是上个段落中讲到的情况，因为一个链接是由一个四元组标定的，要是客户机短时间内在同一个端口上对服务器的同一个端口发起两次连接，就会出现占用</p>
+</li>
+</ol>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-17</span>
+            
+                <span>该篇文章被 Starry Huang</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E8%AE%A1%E7%BD%91/'>
+                            计网
+                        </a>
+                    
+                        <a href='/tags/TCP/'>
+                            TCP
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E8%AE%A1%E7%BD%91/'>
+                            计网
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>漫长寒夜 白昼无期</span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+</html>
